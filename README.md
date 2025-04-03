@@ -1,15 +1,36 @@
+# Project Cyber IS
+Package to bringup robot
+
+
+### 1. **Connect with Raspberry**
+
+```bash
+ssh pi@192.168.18.101
+```
+
+```bash
+cd catkin_ws/src
+```
+
+```bash
+git clone https://github.com/KubaArrow/cyber_is_bringup.git
+```
+
+```bash
+cd .. && catkin_make
+```
 
 ```bash
 sudo chmod +x /home/pi/catkin_ws/src/cyber_is_bringup/bash/setup_robot.sh
 ```
 
-### 2. **Utwórz usługę systemd**
+### 2. **Create service systemd**
 
 ```bash
 sudo nano /etc/systemd/system/ros_start.service
 ```
 
-Wklej zawartość:
+Past content:
 
 ```ini
 [Unit]
@@ -17,22 +38,23 @@ Description=ROS Start Service
 After=network.target
 
 [Service]
-ExecStart=/home/ubuntu/ros_start.sh
+ExecStart=/home/pi/catkin_ws/src/cyber_is_bringup/bash/setup_robot.sh
 Restart=on-failure
-User=ubuntu
-Environment=DISPLAY=:0
-Environment=ROS_IP=127.0.0.1
-Environment=ROS_MASTER_URI=http://localhost:11311
+User=pi
 
 [Install]
 WantedBy=multi-user.target
+
+
+
+
+
 ```
 
-Zamień `User=ubuntu` na swoją nazwę użytkownika.
 
 ---
 
-### 3. **Włącz usługę**
+### 3. **Start service**
 
 ```bash
 sudo systemctl daemon-reexec
