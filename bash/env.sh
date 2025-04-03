@@ -1,3 +1,0 @@
-export ROS_MASTER_URI=http://192.168.18.101:11311
-export ROS_IP=192.168.19.101
-export DISPLAY=:0

@@ -1,7 +1,5 @@
 #!/bin/bash
-source /opt/ros/noetic/setup.bash
-source /home/pi/catkin_ws/devel/setup.bash
-source /home/pi/catkin_ws/src/cyber_is_bringup/bash/env.sh
+source /home/pi/.bashrc
 
 # Uruchom roscore w tle
 roscore &
